@@ -1,35 +1,42 @@
-import { Box } from '@chakra-ui/react';
+import { Badge, Box } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 const FILTER = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'] as const;
+type IProps = {
+  handleFilter: (item: string) => void;
+  active: string;
+};
 
-const Filter = () => {
+const Filter = ({ handleFilter, active }: IProps) => {
   return (
     <Box
       bg='#fff'
       flexWrap='wrap'
       borderRadius='10px'
       my={50}
-      px={100}
-      p={10}
-      display='grid'
-      gridTemplateColumns='1fr 1fr 1fr'
+      px={5}
+      p={5}
+      display='flex'
+      width='100%'
     >
-      {FILTER.map((item) => (
-        <Box
-          mx={2}
+      {FILTER.map((item, index) => (
+        <motion.div
           key={item}
-          px={10}
-          py={10}
-          my={10}
-          borderRadius='10px'
-          bg='#F2F4FF'
-          color='#4661E6'
-          fontWeight={600}
-          textAlign='center'
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.2, type: 'spring', stiffness: 100 }}
         >
-          {item}
-        </Box>
+          <Badge
+            onClick={() => handleFilter(item)}
+            mr={3}
+            mb={3}
+            px={5}
+            variant={active === item ? 'filled' : ''}
+          >
+            {item}
+          </Badge>
+        </motion.div>
       ))}
     </Box>
   );

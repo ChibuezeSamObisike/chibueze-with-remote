@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 
 const GradientCard = () => {
   return (
     <Box
       width='full'
-      height='300px'
+      py={20}
       bg='radial-gradient(
           128.88% 128.88% 
           at 103.9% -10.39%, 
@@ -20,8 +20,14 @@ const GradientCard = () => {
       justifyContent='center'
       fontWeight='bold'
       fontSize='xl'
+      position='relative'
     >
-      GradientCard
+      <Box position='absolute' bottom={5} left={10}>
+        <Text>Frontend Mentor</Text>
+        <Text textStyle='body2' opacity='75%'>
+          Feedback Board
+        </Text>
+      </Box>
     </Box>
   );
 };
