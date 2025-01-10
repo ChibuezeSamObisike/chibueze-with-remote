@@ -24,16 +24,16 @@ const DashboardLayout = () => {
   return (
     <Box
       display='flex'
-      flexDirection={['column', 'row']}
+      flexDirection={['column', 'column', 'column', 'row']}
       alignItems='flex-start'
       justifyContent='space-between'
-      width={['90%', '80vw']}
+      width={['90%', '100%', '80vw']}
       mx='auto'
-      gap={pxToRem(50)}
+      gap={['4', '6', pxToRem(50)]}
       my={100}
       px={['2', '4', '8']}
     >
-      <Box width={['100%', '25%']}>
+      <Box width={['100%', '100%', '100%', '30%']} mb={['6', '6', '0']}>
         <GradientCard />
         <Filter
           handleFilter={handleFilterSuggestions}
@@ -42,12 +42,12 @@ const DashboardLayout = () => {
         <Roadmap />
       </Box>
 
-      <Box width={['100%', '75%']}>
+      <Box width={['100%', '100%', '100%', '65%']} pl={['0', '0', '4']}>
         <SuggestionSummary
           activeSort={activeSort}
           handleSort={handleSortSuggestions}
         />
-        <div>
+        <Box>
           {suggestions.map((item, i) => (
             <motion.div
               key={i}
@@ -63,8 +63,8 @@ const DashboardLayout = () => {
               <SuggestionsCard {...item} />
             </motion.div>
           ))}
-        </div>
-        <div>{suggestions.length === 0 && <EmptyState />}</div>
+        </Box>
+        <Box mt={4}>{suggestions.length === 0 && <EmptyState />}</Box>
       </Box>
     </Box>
   );

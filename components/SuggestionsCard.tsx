@@ -44,12 +44,27 @@ const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
             {title}
           </Text>
           <Text textStyle='body1'>{description}</Text>
-          <Badge mt={2} variant='solid'>
-            {tag}
-          </Badge>
+          <Box display='flex' mt={2} alignItems='center'>
+            <Badge variant='solid'>{tag}</Badge>
+            <Flex
+              display={{ base: 'flex', md: 'none' }}
+              ml={2}
+              alignItems='center'
+            >
+              <Image
+                src='/comment-icon.svg'
+                height='20'
+                width='22'
+                alt='comment icon'
+              />
+              <Text ml={2} fontWeight={700} color='#3A4374'>
+                {comments}
+              </Text>
+            </Flex>
+          </Box>
         </Box>
       </Box>
-      <Flex align='center'>
+      <Flex display={{ base: 'none', md: 'flex' }} align='center'>
         <Image
           src='/comment-icon.svg'
           height='20'
