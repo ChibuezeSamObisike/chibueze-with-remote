@@ -39,8 +39,10 @@ const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
       <Box display='flex' alignItems='flex-start'>
         <UpVoteBadge upvotes={upvotes} />
         <Box ml={10}>
-          <Text textStyle='h3'>{title}</Text>
-          <Text variant='body1'>{description}</Text>
+          <Text _hover={{ color: '#4661E6' }} textStyle='h3'>
+            {title}
+          </Text>
+          <Text textStyle='body1'>{description}</Text>
           <Badge mt={2} variant='solid'>
             {tag}
           </Badge>

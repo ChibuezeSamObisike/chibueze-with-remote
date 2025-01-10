@@ -23,7 +23,7 @@ const GradientCard = () => {
       position='relative'
     >
       <Box position='absolute' bottom={5} left={10}>
-        <Text>Frontend Mentor</Text>
+        <Text textStyle='h2'>Frontend Mentor</Text>
         <Text textStyle='body2' opacity='75%'>
           Feedback Board
         </Text>

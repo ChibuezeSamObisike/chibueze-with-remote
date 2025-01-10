@@ -33,6 +33,9 @@ const Filter = ({ handleFilter, active }: IProps) => {
             mb={3}
             px={5}
             variant={active === item ? 'filled' : ''}
+            _hover={{
+              backgroundColor: '#CFD7FF',
+            }}
           >
             {item}
           </Badge>

@@ -8,9 +8,10 @@ import React, { FC } from 'react';
 
 interface IProps {
   handleSort: (s: string) => void;
+  activeSort?: string;
 }
 
-const SuggestionSummary: FC<IProps> = ({ handleSort }) => {
+const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
   return (
     <Box
       bg='#373F68'
@@ -37,12 +38,12 @@ const SuggestionSummary: FC<IProps> = ({ handleSort }) => {
           6 Suggestions
         </Text>
       </Flex>
-      <Box mb={['4', '0']}>
+      <Box display='flex' mb={['4', '0']}>
         {' '}
         <Text>
           Sort by : <b> Most Upvotes</b>
         </Text>
-        <SortMenu handleSort={handleSort} />
+        <SortMenu handleSort={handleSort} activeSort={activeSort} />
       </Box>
       <Button width={['100%', 'auto']} mt={['4', '0']}>
         {' '}

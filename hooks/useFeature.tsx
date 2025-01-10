@@ -104,6 +104,7 @@ const useFeature = () => {
     handleSortSuggestions,
     activeSuggestion,
     sortBy,
+    activeSort: sortBy,
   };
 };
 

@@ -11,12 +11,12 @@ import { pxToRem } from '@/utils/pxToRem';
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
-import ColorModeSwitcher from '@/components/SwitchColor';
 
 const DashboardLayout = () => {
   const {
     suggestions,
     activeSuggestion,
+    activeSort,
     handleFilterSuggestions,
     handleSortSuggestions,
   } = useFeature();
@@ -34,7 +34,6 @@ const DashboardLayout = () => {
       px={['2', '4', '8']}
     >
       <Box width={['100%', '25%']}>
-        <ColorModeSwitcher />
         <GradientCard />
         <Filter
           handleFilter={handleFilterSuggestions}
@@ -44,7 +43,10 @@ const DashboardLayout = () => {
       </Box>
 
       <Box width={['100%', '75%']}>
-        <SuggestionSummary handleSort={handleSortSuggestions} />
+        <SuggestionSummary
+          activeSort={activeSort}
+          handleSort={handleSortSuggestions}
+        />
         <div>
           {suggestions.map((item, i) => (
             <motion.div
