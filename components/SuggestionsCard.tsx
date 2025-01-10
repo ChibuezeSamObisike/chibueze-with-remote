@@ -23,6 +23,7 @@ const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
     <Box
       display='flex'
       alignItems='center'
+      flexDirection={['column', 'row']}
       justifyContent='space-between'
       px={5}
       py={10}
