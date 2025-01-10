@@ -5,15 +5,20 @@ import { pxToRem } from '@/utils/pxToRem';
 import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React, { FC } from 'react';
+import { motion } from 'framer-motion';
 
 interface IProps {
   handleSort: (s: string) => void;
   activeSort?: string;
 }
 
+const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
+const MotionButton = motion(Button);
+
 const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
   return (
-    <Box
+    <MotionBox
       bg='#373F68'
       display='flex'
       flexDirection={['column', 'row']}
@@ -24,32 +29,52 @@ const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
       color='#fff'
       borderRadius='10px'
       mb={10}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
-      <Flex align='center' mb={['4', '0']}>
-        {' '}
+      <MotionFlex
+        align='center'
+        mb={['4', '0']}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.2 }}
+      >
         <Image
           src='/bulb-icon.svg'
           width='24'
           height='24'
           style={{ width: '24px' }}
-          alt='bulb-con'
+          alt='bulb-icon'
         />
         <Text textStyle='h3' color='#fff' ml={['3', '5']}>
           6 Suggestions
         </Text>
-      </Flex>
-      <Box display='flex' mb={['4', '0']}>
-        {' '}
+      </MotionFlex>
+      <MotionBox
+        display='flex'
+        mb={['4', '0']}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
+      >
         <Text>
-          Sort by : <b> Most Upvotes</b>
+          Sort by: <b>Most Upvotes</b>
         </Text>
         <SortMenu handleSort={handleSort} activeSort={activeSort} />
-      </Box>
-      <Button width={['100%', 'auto']} mt={['4', '0']}>
-        {' '}
+      </MotionBox>
+      <MotionButton
+        width={['100%', 'auto']}
+        mt={['4', '0']}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
+      >
         + Add feedback
-      </Button>
-    </Box>
+      </MotionButton>
+    </MotionBox>
   );
 };
 
