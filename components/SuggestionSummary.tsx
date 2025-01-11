@@ -57,10 +57,9 @@ const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
+        alignItems='center'
       >
-        <Text>
-          Sort by: <b>Most Upvotes</b>
-        </Text>
+        <Text>Sort by:</Text>
         <SortMenu handleSort={handleSort} activeSort={activeSort} />
       </MotionBox>
       <MotionButton

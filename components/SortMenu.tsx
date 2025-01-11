@@ -30,12 +30,15 @@ const CustomSortDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleOptionClick = (value: string) => {
     handleSort(value);
     setIsOpen(false);
   };
+
+  const activeLabel =
+    SORT_DETAILS.find((item) => item.value === activeSort)?.label || 'Upvotes';
 
   return (
     <Box position='relative' display='inline-block'>
@@ -48,27 +51,30 @@ const CustomSortDropdown = ({
         color='white'
         cursor='pointer'
         onClick={toggleDropdown}
+        aria-expanded={isOpen}
       >
-        {!isOpen ? (
-          <Image src='/down-arrow.svg' alt='' width='12' height='8' />
-        ) : (
-          <Image src='/up-arrow.svg' alt='' width='12' height='8' />
-        )}
+        <Box display='flex' alignItems='center' gap={2}>
+          <b>{activeLabel}</b>
+          <Image
+            src={isOpen ? '/up-arrow.svg' : '/down-arrow.svg'}
+            alt={isOpen ? 'Collapse dropdown' : 'Expand dropdown'}
+            width={12}
+            height={8}
+          />
+        </Box>
       </Box>
 
       {isOpen && (
         <Stack
           position='absolute'
           top='100%'
-          left={0}
+          left='0'
           mt={2}
           bg='#fff'
           color='#647196'
-          boxShadow='0px 10px 40px -7px #373F6859;'
+          boxShadow='0px 10px 40px -7px #373F6859'
           borderRadius='md'
-          shadow='lg'
           zIndex={10}
-          overflow='hidden'
           spacing={0}
           width='255px'
         >
@@ -85,10 +91,16 @@ const CustomSortDropdown = ({
               borderBottom={arr.length - 1 !== i ? '1px solid #e2e3eb' : ''}
               display='flex'
               justifyContent='space-between'
+              alignItems='center'
             >
-              {item.label}{' '}
+              {item.label}
               {activeSort === item.value && (
-                <Image src='/tick-active.svg' width='11' height='7' alt='' />
+                <Image
+                  src='/tick-active.svg'
+                  width='11'
+                  height='7'
+                  alt='Selected option'
+                />
               )}
             </Box>
           ))}
