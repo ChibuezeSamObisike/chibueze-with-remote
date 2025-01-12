@@ -21,7 +21,7 @@ const Filter = ({ handleFilter, active, sx }: IProps) => {
         p={5}
         sx={sx}
         display={{ base: 'none', md: 'flex' }}
-        width='100%'
+        width={'100%'}
       >
         {FILTER.map((item, index) => (
           <motion.div

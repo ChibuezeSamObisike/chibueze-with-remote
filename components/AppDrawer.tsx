@@ -14,14 +14,16 @@ import Filter from '@/components/Filter';
 type IProps = {
   handleFilter: (item: string) => void;
   active: string;
+  isOpen: boolean;
+  onClose: () => void;
 };
 
-const AppDrawer = ({ handleFilter, active }: IProps) => {
+const AppDrawer = ({ handleFilter, active, isOpen, onClose }: IProps) => {
   return (
-    <Drawer placement='right' onClose={() => {}} isOpen={true}>
+    <Drawer placement='right' onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay zIndex={9} />
       <DrawerContent zIndex={9}>
-        <DrawerBody bg='#f7f8fd' pt={25}>
+        <DrawerBody bg='#f7f8fd' pt={55}>
           <Box display='flex' flexDirection='column' gap={4}>
             <Filter
               sx={{ display: 'flex' }}

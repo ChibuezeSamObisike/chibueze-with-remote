@@ -6,7 +6,12 @@ import Image from 'next/image';
 
 const MotionBox = motion(Box);
 
-const GradientCard = () => {
+interface IProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+const GradientCard = ({ isOpen, onToggle }: IProps) => {
   return (
     <MotionBox
       width='full'
@@ -60,7 +65,13 @@ const GradientCard = () => {
         </MotionText>
       </Box>
       <Box display={{ base: 'block', md: 'none' }}>
-        <Image alt='' src='/menu-open.svg' width={20} height={17} />
+        <Image
+          onClick={onToggle}
+          alt=''
+          src={isOpen ? '/menu-close.svg' : '/menu-open.svg'}
+          width={20}
+          height={17}
+        />
       </Box>
     </MotionBox>
   );

@@ -7,7 +7,7 @@ import Roadmap from '@/components/Roadmap';
 import SuggestionsCard from '@/components/SuggestionsCard';
 import SuggestionSummary from '@/components/SuggestionSummary';
 import useFeature from '@/hooks/useFeature';
-import { Box } from '@chakra-ui/react';
+import { Box, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
 import AppDrawer from '@/components/AppDrawer';
@@ -21,9 +21,16 @@ const DashboardLayout = () => {
     handleSortSuggestions,
   } = useFeature();
 
+  const { isOpen, onClose, onToggle } = useDisclosure();
+
   return (
     <>
-      <AppDrawer handleFilter={handleFilterSuggestions} active={activeSort} />
+      <AppDrawer
+        isOpen={isOpen}
+        onClose={onClose}
+        handleFilter={handleFilterSuggestions}
+        active={activeSort}
+      />
       <Box
         display='flex'
         flexDirection={['column', 'column', 'column', 'row']}
@@ -45,7 +52,7 @@ const DashboardLayout = () => {
           width={{ base: '100%', lg: '35%' }}
           mb={{ base: 0, md: 6 }}
         >
-          <GradientCard />
+          <GradientCard onToggle={onToggle} isOpen={isOpen} />
           <Filter
             handleFilter={handleFilterSuggestions}
             active={activeSuggestion}
