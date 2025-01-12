@@ -49,7 +49,7 @@ const DashboardLayout = () => {
             lg: 'repeat(1, 1fr)',
           }}
           gap={4}
-          width={{ base: '100%', lg: '35%' }}
+          width={{ base: '100%', lg: '25%' }}
           mb={{ base: 0, md: 6 }}
         >
           <GradientCard onToggle={onToggle} isOpen={isOpen} />
@@ -60,7 +60,7 @@ const DashboardLayout = () => {
           <Roadmap />
         </Box>
 
-        <Box width={['100%', '100%', '100%', '65%']} pl={['0', '0', '4']}>
+        <Box width={['100%', '100%', '100%', '75%']} pl={['0', '0', '4']}>
           <SuggestionSummary
             activeSort={activeSort}
             handleSort={handleSortSuggestions}
