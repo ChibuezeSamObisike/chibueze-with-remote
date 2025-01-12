@@ -1,6 +1,5 @@
-'use client';
 import UpVoteBadge from '@/components/UpVoteBadge';
-import { Badge, Box, Flex, Text } from '@chakra-ui/react';
+import { Badge, Box, Flex, Text, StyleProps } from '@chakra-ui/react';
 import React from 'react';
 import Image from 'next/image';
 
@@ -11,6 +10,27 @@ interface SuggestionsCardProps {
   upvotes: number;
   comments: number;
 }
+
+const Comments = ({ comments, sx }: { comments: number; sx?: StyleProps }) => {
+  return (
+    <Flex
+      sx={sx}
+      display={{ base: 'flex', md: 'none' }}
+      ml={2}
+      alignItems='center'
+    >
+      <Image
+        src='/comment-icon.svg'
+        height='20'
+        width='22'
+        alt='comment icon'
+      />
+      <Text ml={2} fontWeight={700} color='#3A4374'>
+        {comments}
+      </Text>
+    </Flex>
+  );
+};
 
 const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
   title,
@@ -38,43 +58,32 @@ const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
       transition='all 0.3s ease'
     >
       <Box display='flex' alignItems='flex-start'>
-        <UpVoteBadge upvotes={upvotes} />
-        <Box ml={10}>
+        <Box display={{ base: 'none', md: 'block' }}>
+          <UpVoteBadge upvotes={upvotes} />
+        </Box>
+        <Box ml={{ base: 0, md: 10 }}>
           <Text _hover={{ color: '#4661E6' }} textStyle='h3'>
             {title}
           </Text>
           <Text textStyle='body1'>{description}</Text>
           <Box display='flex' mt={2} alignItems='center'>
             <Badge variant='solid'>{tag}</Badge>
-            <Flex
-              display={{ base: 'flex', md: 'none' }}
-              ml={2}
-              alignItems='center'
-            >
-              <Image
-                src='/comment-icon.svg'
-                height='20'
-                width='22'
-                alt='comment icon'
-              />
-              <Text ml={2} fontWeight={700} color='#3A4374'>
-                {comments}
-              </Text>
-            </Flex>
+            <Comments
+              sx={{ display: { base: 'none', md: 'flex' } }}
+              comments={comments}
+            />
           </Box>
         </Box>
       </Box>
-      <Flex display={{ base: 'none', md: 'flex' }} align='center'>
-        <Image
-          src='/comment-icon.svg'
-          height='20'
-          width='22'
-          alt='comment icon'
-        />
-        <Text ml={2} fontWeight={700} color='#3A4374'>
-          {comments}
-        </Text>
-      </Flex>
+      <Box
+        display={{ base: 'flex', md: 'none' }}
+        mt={5}
+        width='100%'
+        justifyContent='space-between'
+      >
+        <UpVoteBadge direction='row' sx={{ px: 3, py: 2 }} upvotes={upvotes} />
+        <Comments comments={comments} />
+      </Box>
     </Box>
   );
 };

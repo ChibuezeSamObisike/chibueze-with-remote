@@ -2,13 +2,15 @@ import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
+import Image from 'next/image';
+
 const MotionBox = motion(Box);
 
 const GradientCard = () => {
   return (
     <MotionBox
       width='full'
-      py={20}
+      py={{ base: 5, md: 20 }}
       bg='radial-gradient(
           128.88% 128.88% 
           at 103.9% -10.39%, 
@@ -16,11 +18,11 @@ const GradientCard = () => {
           #A337F6 53.09%, 
           #28A7ED 100%
         )'
-      borderRadius='8px'
+      borderRadius={{ base: 0, md: '8px' }}
       color='white'
       display='flex'
       alignItems='center'
-      justifyContent='center'
+      justifyContent='space-between'
       fontWeight='bold'
       fontSize='xl'
       position='relative'
@@ -28,8 +30,17 @@ const GradientCard = () => {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
       whileHover={{ scale: 1.05 }}
+      pr={{ base: 5 }}
+      zIndex={100}
     >
-      <Box position='absolute' bottom={5} left={10}>
+      <Box
+        position={{ md: 'absolute' }}
+        textAlign={{ base: 'left' }}
+        bottom={{ md: 35, lg: 15 }}
+        left={{ md: 5, lg: 10 }}
+        width={{ base: '100%' }}
+        px={{ base: 10, md: 0 }}
+      >
         <MotionText
           textStyle='h2'
           initial={{ opacity: 0, y: 20 }}
@@ -47,6 +58,9 @@ const GradientCard = () => {
         >
           Feedback Board
         </MotionText>
+      </Box>
+      <Box display={{ base: 'block', md: 'none' }}>
+        <Image alt='' src='/menu-open.svg' width={20} height={17} />
       </Box>
     </MotionBox>
   );

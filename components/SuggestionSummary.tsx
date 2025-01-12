@@ -21,50 +21,53 @@ const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
     <MotionBox
       bg='#373F68'
       display='flex'
-      flexDirection={['column', 'row']}
+      flexDirection={'row'}
       alignItems='center'
       justifyContent='space-between'
       px={['4', '5']}
-      py={pxToRem(20)}
+      py={{ md: pxToRem(20) }}
       color='#fff'
-      borderRadius='10px'
-      mb={10}
+      borderRadius={{ base: 0, md: '10px' }}
+      mb={{ md: 10 }}
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <MotionFlex
         align='center'
-        mb={['4', '0']}
+        py={2}
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.2 }}
       >
-        <Image
-          src='/bulb-icon.svg'
-          width='24'
-          height='24'
-          style={{ width: '24px' }}
-          alt='bulb-icon'
-        />
-        <Text textStyle='h3' color='#fff' ml={['3', '5']}>
-          6 Suggestions
-        </Text>
+        <Box display={{ base: 'none', md: 'flex' }} alignItems='center'>
+          <Image
+            src='/bulb-icon.svg'
+            width='24'
+            height='24'
+            style={{ width: '24px' }}
+            alt='bulb-icon'
+          />
+          <Text textStyle='h3' color='#fff' ml={['3', '5']}>
+            6 Suggestions
+          </Text>
+        </Box>
+        <MotionBox
+          display='flex'
+          ml={4}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
+          alignItems='center'
+        >
+          <Text>Sort by:</Text>
+          <SortMenu handleSort={handleSort} activeSort={activeSort} />
+        </MotionBox>
       </MotionFlex>
-      <MotionBox
-        display='flex'
-        mb={['4', '0']}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
-        alignItems='center'
-      >
-        <Text>Sort by:</Text>
-        <SortMenu handleSort={handleSort} activeSort={activeSort} />
-      </MotionBox>
+
       <MotionButton
-        width={['100%', 'auto']}
-        mt={['4', '0']}
+        width={{ base: '40%', md: 'auto' }}
+        // mt={['4', '0']}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, y: -20 }}

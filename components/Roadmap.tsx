@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, StyleProps, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -20,9 +20,16 @@ const ROAD_MAP = [
   },
 ] as const;
 
-const Roadmap = () => {
+const Roadmap = ({ sx }: { sx?: StyleProps }) => {
   return (
-    <Box px={100} p={10} borderRadius='10px' bg='#fff'>
+    <Box
+      px={100}
+      p={10}
+      borderRadius='10px'
+      display={{ base: 'none', md: 'block' }}
+      bg='#fff'
+      sx={sx}
+    >
       <Box display='flex' alignItems='center' justifyContent='space-between'>
         <Text textStyle='h3'>Roadmap</Text>
         <Text cursor='pointer' textDecor='underline' color='#4661E6'>
