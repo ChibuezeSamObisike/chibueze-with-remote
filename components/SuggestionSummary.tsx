@@ -25,7 +25,7 @@ const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
       alignItems='center'
       justifyContent='space-between'
       px={['4', '5']}
-      py={{ md: pxToRem(20) }}
+      py={{ base: 4, md: pxToRem(20) }}
       color='#fff'
       borderRadius={{ base: 0, md: '10px' }}
       mb={{ md: 10 }}

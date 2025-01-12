@@ -69,22 +69,28 @@ const SuggestionsCard: React.FC<SuggestionsCardProps> = ({
           <Box display='flex' mt={2} alignItems='center'>
             <Badge variant='solid'>{tag}</Badge>
             <Comments
-              sx={{ display: { base: 'flex', md: 'none' } }}
+              sx={{ display: { base: 'none', md: 'flex' } }}
               comments={comments}
             />
           </Box>
         </Box>
       </Box>
-      <Box mt={5}>
+      <Box
+        display='flex'
+        alignItems='center'
+        justifyContent='space-between'
+        mt={5}
+        width={{ base: '100%', md: 'auto' }}
+      >
         <UpVoteBadge
           direction='row'
-          sx={{ px: 3, py: 2, display: { base: 'none', lg: 'none' } }}
+          sx={{
+            px: 3,
+            py: 2,
+          }}
           upvotes={upvotes}
         />
-        <Comments
-          comments={comments}
-          sx={{ display: { base: 'none', md: 'flex' } }}
-        />
+        <Comments comments={comments} />
       </Box>
     </Box>
   );
