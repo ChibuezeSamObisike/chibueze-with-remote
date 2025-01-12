@@ -36,7 +36,7 @@ const DashboardLayout = () => {
         flexDirection={['column', 'column', 'column', 'row']}
         alignItems='flex-start'
         justifyContent='space-between'
-        width={{ base: '100%', md: '90vw', lg: '70vw' }}
+        width={{ base: '100%', md: '90vw', lg: '80vw' }}
         mx='auto'
         gap={{ md: 4 }}
         my={{ base: 0, md: 100 }}
