@@ -60,7 +60,9 @@ const SuggestionSummary: FC<IProps> = ({ handleSort, activeSort }) => {
           transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
           alignItems='center'
         >
-          <Text>Sort by:</Text>
+          <Text fontSize={{ base: pxToRem(13), lg: pxToRem(14) }}>
+            Sort by:
+          </Text>
           <SortMenu handleSort={handleSort} activeSort={activeSort} />
         </MotionBox>
       </MotionFlex>

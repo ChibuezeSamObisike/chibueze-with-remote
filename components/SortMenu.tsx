@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Stack } from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
 import Image from 'next/image';
+import { pxToRem } from '@/utils/pxToRem';
 
 const SORT_DETAILS = [
   {
@@ -43,7 +44,7 @@ const CustomSortDropdown = ({
   return (
     <Box position='relative' display='inline-block'>
       <Box
-        px={4}
+        px={{ base: 2, lg: 4 }}
         py={2}
         fontSize={{ base: 'md', lg: 'lg' }}
         fontWeight={600}
@@ -54,7 +55,9 @@ const CustomSortDropdown = ({
         aria-expanded={isOpen}
       >
         <Box display='flex' alignItems='center' gap={2}>
-          <b>{activeLabel}</b>
+          <Text fontSize={{ base: pxToRem(13), lg: pxToRem(14) }}>
+            <b>{activeLabel}</b>
+          </Text>
           <Image
             src={isOpen ? '/up-arrow.svg' : '/down-arrow.svg'}
             alt={isOpen ? 'Collapse dropdown' : 'Expand dropdown'}
