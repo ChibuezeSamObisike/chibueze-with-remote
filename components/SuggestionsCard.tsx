@@ -97,7 +97,9 @@ const MobileView: React.FC<SuggestionsCardProps> = ({
         <Text _hover={{ color: '#4661E6' }} textStyle='h3'>
           {title}
         </Text>
-        <Text textStyle='body1'>{description}</Text>
+        <Text my={2} textStyle='body1'>
+          {description}
+        </Text>
         <Badge variant='solid' mt={2}>
           {tag}
         </Badge>
